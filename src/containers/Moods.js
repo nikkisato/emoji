@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import Controls from '../components/controls/Controls';
 import Face from '../components/face/Face';
 
+//actions
 const actions = [
   { name: 'DRINK_COFFEE', text: 'Drink Coffee', stateName: 'coffees' },
   { name: 'EAT_SNACK', text: 'Snack', stateName: 'snacks' },
   { name: 'TAKE_NAP', text: 'Nap', stateName: 'naps' },
-  { name: 'STUDY', text: 'Study', stateName: 'studies' },
+  { name: 'STUDY', text: 'Study', stateName: 'studies' }
 ];
 
 export const isTired = state => state.coffees < 1 && state.naps < 1;
@@ -31,8 +32,9 @@ export default class Moods extends Component {
     snacks: 0,
     naps: 0,
     studies: 0
-  }
+  };
 
+  //reducers
   handleSelection = name => {
     switch(name) {
       case 'DRINK_COFFEE':
@@ -50,7 +52,7 @@ export default class Moods extends Component {
       default:
         console.log(`unhandled name: ${name}`);
     }
-  }
+  };
 
   render() {
     const face = getFace(this.state);
@@ -61,7 +63,10 @@ export default class Moods extends Component {
 
     return (
       <>
-        <Controls actions={controlActions} handleSelection={this.handleSelection}/>
+        <Controls
+          actions={controlActions}
+          handleSelection={this.handleSelection}
+        />
         <Face emoji={face} />
       </>
     );
